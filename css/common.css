@@ -1,0 +1,186 @@
+body, div, p, span, a, ul, ol, li{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+/*修改input标签默认样式*/
+.a-upload {
+    width: 100px;
+    padding: 4px 10px;
+    /*height: 20px;*/
+    /*line-height: 20px;*/
+    position: relative;
+    cursor: pointer;
+    color: #947206;
+    background: -webkit-linear-gradient(#FFDA51, #FFC23C);
+    background: -o-linear-gradient(#FFDA51, #FFC23C);
+    background: -moz-linear-gradient(#FFDA51, #FFC23C);
+    background: linear-gradient(#FFDA51, #FFC23C);
+    border: 1px solid #E1B246;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-block;
+    *display: inline;
+    *zoom: 1
+}
+
+.a-upload  input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer
+}
+
+.a-upload:hover {
+    color: #fff;
+    background: -webkit-linear-gradient(#f7ec6b, #FFD320);
+    background: -o-linear-gradient(#f7ec6b, #FFD320);
+    background: -moz-linear-gradient(#f7ec6b, #FFD320);
+    background: linear-gradient(#f7ec6b, #FFD320);
+    border-color: #f7ad6b;
+    text-decoration: none
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.wrapper{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	background: #000;
+	opacity: 0.2;
+	z-index: 998;
+    color: rgb(4, 134, 165);;
+    text-align: center;
+    font-family: 'jackrunnerfreeregular';
+    font-size: 200px;
+}
+.vertical_center{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: 50%;
+    width: 100%;
+}
+.choose_picture{
+    width: 80%;
+    height: 26%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    z-index: 999;   
+}
+
+.mypics{
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 20px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+}
+.takes{
+    width: 260px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 20px;
+    letter-spacing: 45px;
+    border: 1px solid #ccc;
+    background: -webkit-linear-gradient(#ffffff, #f2f2f2);
+    background: -o-linear-gradient(#ffffff, #f2f2f2);
+    background: -moz-linear-gradient(#ffffff, #f2f2f2);
+    background: linear-gradient(#ffffff, #f2f2f2);
+}
+.open_pic{
+    width: 240px;
+    padding: 4px 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+
+
+/*上部分*/
+.top_part{
+   width: 100%;
+   height: 80% 
+}
+/*左侧部分*/
+.rechoose{
+    width: 10%;
+    
+}
+.revise_a{
+    width: 20px;
+    margin: 15px 15px 0 15px;
+}
+/*中间主部分*/
+.main_content{
+    /*width: 80%;*/
+    width:-moz-calc(80% - 2px);
+    width:-webkit-calc(80% - 2px);
+    width: calc(80% - 2px);
+    height:-moz-calc(100% - 1px);
+    height:-webkit-calc(100% - 1px);
+    height: calc(100% - 1px);
+    border: 1px solid #ccc;
+    border-top: none;
+}
+
+/*右侧*/
+.sidebar{
+    width: 10%;
+}
+.revise_button{
+    width: 74px;
+    height: 24px;
+    margin: 15px 15px 0 15px;
+    color: #672929;
+    cursor: pointer;
+    background: -webkit-linear-gradient(#FFDA51, #FFC23C);
+    background: -o-linear-gradient(#FFDA51, #FFC23C);
+    background: -moz-linear-gradient(#FFDA51, #FFC23C);
+    background: linear-gradient(#FFDA51, #FFC23C);
+    border: 1px solid #ffd222;
+    border-radius: 3px;
+    box-shadow: 2px 2px 5px #ccc;
+}
+.revise_button:hover{
+    color: #fff;
+    background: -webkit-linear-gradient(#f1d571, #caa147);
+    background: -o-linear-gradient(#f1d571, #caa147);
+    background: -moz-linear-gradient(#f1d571, #caa147);
+    background: linear-gradient(#f1d571, #caa147);
+
+}
+/*下部分*/ 
+.bottom_part{
+    width: 100%;
+    height: 20%;
+}
+.detail_set{
+    margin: 10px;
+    color: #8a520b;
+}
+.detail_set .numberputs{
+    width: 50px;
+    border: 1px solid #2f90a5;
+    text-indent: 10px;
+}
