@@ -1,72 +1,101 @@
 <html>
     <head>
-        <title>zImage.js</title>
+        <title>在线图片处理</title>
         <meta charset="utf-8">
         <meta author="chelfinn">
+        <link rel="stylesheet" href="./cropper/cropper.css">
+        <link rel="stylesheet" href="./css/common.css">
         <script src="./js/jquery-v3.2.1.js"></script>
         <script src="./js/zImage.js"></script>
+        <script src="./cropper/cropper.js"></script>
         <style>
-            label{
-                width: 30px;
-                text-align: right;
+            .cropper-face{background:none;}
+            .cropper-point.point-se{width: 5px; height: 5px;}
+
+            .clear{clear: both;}
+            @font-face {
+                font-family: 'jackrunnerfreeregular';
+                src: url('font-face/alterdeco-jackrunner-webfont.eot');
+                src: url('font-face/alterdeco-jackrunner-webfont.eot?#iefix') format('embedded-opentype'),
+                     url('font-face/alterdeco-jackrunner-webfont.woff') format('woff'),
+                     url('font-face/alterdeco-jackrunner-webfont.ttf') format('truetype'),
+                     url('alterdeco-jackrunner-webfont.svg#jackrunnerfreeregular') format('svg');
+                font-weight: normal;
+                font-style: normal;
             }
         </style>
+        <script src="./js/index.js"></script>
     </head>
 <body>
-<div>
-    <img src="img/garbage.png" style="max-width: 600px; max-height: 600px;" id="img1" />
-    <img style="max-width: 600px; max-height: 600px;" id="img2" />
-    </br>
-    <label>Width:</label><input type="text" name="imgWidth">
-    <label>Height:</label><input type="text" name="imgHeight">
-    <input type="button" id="Edit" value="缩放">
+<section>   
+    <!-- <input type="file" name="file"> -->  
+    <div class="top_part">
+        <div class="rechoose left">
+            <a href="javascript:;" class="a-upload revise_a">
+                <input type="file" name="file" id="">重选图片
+            </a>
+            <a href="#" class="a-upload revise_a">拍照</a>
+            <a id="download" download="zImage" class="a-upload revise_a">下载</a>
+        </div>
+        <div class="main_content left">
+            <div class="left">               
+                <img src="img/garbage.png" data-imgType="image/png" style="max-width: 600px; max-height: 600px;" id="img1" />
+                <img style="max-width: 600px; max-height: 600px;" id="img2"/>
+            </div>
+            <div class="cropping-img left" >
+                <img style="max-width: 600px; max-height: 600px;" id="img3">
+                <img style="max-width: 600px; max-height: 600px;" id="img4">
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div class="sidebar left">
+            <input type="button" class="revise_button" id="Edit" value="修改大小">
+            <input type="button" class="revise_button" id="Rotate" value="旋转图片">
+            <input type="button" class="revise_button" id="Filter" value="滤镜">                     
+            <input type="button" class="revise_button" id="ConfirmScreenshots" value="确认抠图"><br/>
+            <input type="button" class="revise_button" id="startCutOut" value="开始抠图">
+        </div>
+    </div>
+    <div class="bottom_part">
+        <div class="detail_set">
+            <label>宽:</label><input class="numberputs" type="text" name="imgWidth">
+            <label>高:</label><input class="numberputs" type="text" name="imgHeight">
+            <label>dpi:</label><input class="numberputs" type="text" name="encoderOptions" value="1">
+            <label>类型:</label>
+            <select name="type" id="imgType">
+                <option value="image/png">image/png</option>
+                <option value="image/jpeg">image/jpeg</option>
+            </select>
+            <label>红:</label><input class="numberputs" type="text" name="red">
+            <label>绿:</label><input class="numberputs" type="text" name="green">
+            <label>蓝:</label><input class="numberputs" type="text" name="blue">
+            <label>透明度:</label><input class="numberputs" type="text" name="opacity">
+            <label>替换颜色:</label><input class="numberputs" type="text" name="targetColor">
+            <label>抠图色差值:</label><input class="numberputs" type="text" name="offsetColor">
+            <label>是否开启局部抠图:</label>
+            <input type="radio" name="isPart" value="是" >是<input type="radio" name="isPart" value="否" checked="checked">否
+        </div>
+        
+    </div>
+    <!-- <div class="imgInfo">
+        <span>图片大小<span id="size"></span></span> |
+        <span>图片类型<span id="type"></span></span>
+    </div> -->
 
-    <input type="button" id="Rotate" value="旋转">
-    </br>
+    <div id="yulan"></div>   
+</section>
 
-    <label>red:</label><input type="text" name="red">
-    <label>green:</label><input type="text" name="green">
-    <label>blue:</label><input type="text" name="blue">
-    <label>opacity:</label><input type="text" name="opacity">
-    <input type="button" id="Filter" value="滤镜">
-
-    <a id="download">下载</a>
-    <br/>
+<section class="wrapper"><div class="vertical_center">速度PS</div></section>
+<div class="choose_picture">
+    <div class="mypics">
+        <a href="javascript:;" class="a-upload open_pic">
+            <input type="file" name="file" id="">打开一张图片
+        </a>
+    </div>
+   
+    <div class="mypics"><button class="takes">拍照</button></div> 
 </div>
+
+
 </body>
 </html>
-
-<script>
-    window.onload=getExif;
-    var rotate = 0;
-    function getExif() {
-        image(rotate);
-    }
-    $('#Edit').click(function(){
-        image(rotate);
-    })
-    $('#Rotate').click(function(){
-        rotate = rotate + 1;
-        image(rotate);
-    })
-    $('#Filter').click(function(){
-        image(rotate);
-    })
-    function image(rotate){
-        var width = $('input[name="imgWidth"]').val();
-        var height = $('input[name="imgHeight"]').val();
-        var red = $('input[name="red"]').val();
-        var green = $('input[name="green"]').val();
-        var blue = $('input[name="blue"]').val();
-        var opacity = $('input[name="opacity"]').val();
-        var zImage = $('#img1').zImage({targetId:'myCanvas',rotate:rotate,customWidth:width,customHeight:height});
-        zImage.setRed(red);
-        zImage.setGreen(green);
-        zImage.setBlue(blue);
-        zImage.setOpacity(opacity);
-        var imgData = zImage.DrawingImg();
-        console.log(imgData);
-        $('#img2').attr('src',imgData.url);
-        $("#download").attr("href", imgData.url).attr('download','aaaa');
-    }
-</script>
