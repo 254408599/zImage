@@ -27,7 +27,7 @@
         <script src="./js/index.js"></script>
     </head>
 <body>
-<section>   
+<section class="hide" id="canvas_part">
     <!-- <input type="file" name="file"> -->  
     <div class="top_part">
         <div class="rechoose left">
@@ -38,15 +38,17 @@
             <a id="download" download="zImage" class="a-upload revise_a">下载</a>
         </div>
         <div class="main_content left">
-            <div class="left">               
-                <img src="img/garbage.png" data-imgType="image/png" style="max-width: 600px; max-height: 600px;" id="img1" />
-                <img style="max-width: 600px; max-height: 600px;" id="img2"/>
+            <div class="picture_show">
+                <div class="left">
+                    <img src="img/garbage.png" data-imgType="image/png" id="img1"  />
+                    <img id="img2"/>
+                </div>
+                <div class="cropping-img left" >·
+                    <img id="img3">
+                    <img style="max-width: 600px; max-height: 600px;" id="img4">
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="cropping-img left" >
-                <img style="max-width: 600px; max-height: 600px;" id="img3">
-                <img style="max-width: 600px; max-height: 600px;" id="img4">
-            </div>
-            <div class="clear"></div>
         </div>
         <div class="sidebar left">
             <input type="button" class="revise_button" id="Edit" value="修改大小">
@@ -85,15 +87,20 @@
     <div id="yulan"></div>   
 </section>
 
-<section class="wrapper"><div class="vertical_center">速度PS</div></section>
+<section class="wrapper">
+    <div class="bg_word">速</div>
+    <div class="bg_word">度</div>
+    <div class="bg_word">P</div>
+    <div class="bg_word">S</div>
+</section>
 <div class="choose_picture">
     <div class="mypics">
-        <a href="javascript:;" class="a-upload open_pic">
-            <input type="file" name="file" id="">打开一张图片
-        </a>
+        <label class="label-upload">
+            <input type="file" name="file" id="" style="display: none;"><span class="chespan word_effects">选择图片</span>
+        </label>
     </div>
-   
-    <div class="mypics"><button class="takes">拍照</button></div> 
+
+    <div class="mypics"><button class="takes word_effects" type="button">拍照</button></div>
 </div>
 
 
